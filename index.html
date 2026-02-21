@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ImplementIQ Systems — Implementação profissional de automação, business intelligence e integração de sistemas para pequenas e médias empresas em Portugal.">
+    <meta name="theme-color" content="#1e3a8a">
+    <title>ImplementIQ Systems — Implementação de Sistemas para PMEs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navigation" role="navigation">
+    <div class="nav-container">
+        <a href="#home" class="logo">
+            <img src="implementiq-removebg-preview.png" alt="ImplementIQ Systems" class="logo-image">
+        </a>
+        <div class="nav-menu" id="navMenu">
+            <a href="#solucoes" class="nav-link" data-pt="Soluções" data-en="Solutions">Soluções</a>
+            <a href="#como-funciona" class="nav-link" data-pt="Como Funciona" data-en="How It Works">Como Funciona</a>
+            <a href="#quem-somos" class="nav-link" data-pt="Sobre" data-en="About">Sobre</a>
+            <a href="#contato" class="nav-cta" data-pt="Fale Connosco" data-en="Get in Touch">Fale Connosco</a>
+            <button class="lang-toggle" aria-label="Mudar idioma para inglês">EN</button>
+        </div>
+        <button class="mobile-menu-button" aria-label="Abrir menu de navegação" id="mobileMenuBtn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+        </button>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-container">
+        <div class="hero-content">
+            <p class="hero-subtitle"
+               data-pt="Soluções para Pequenas e Médias Empresas"
+               data-en="Solutions for Small and Medium Businesses"></p>
+
+            <h1 class="hero-title"
+                data-pt="A sua decisão já está tomada.<br>A execução fica connosco."
+                data-en="Your decision is already made.<br>The execution is on us."></h1>
+
+            <p class="hero-description"
+               data-pt="Ajudamos empresas a transformar ideias em sistemas que funcionam. Automação, Business Intelligence e integração de dados — com acompanhamento próximo e resultados concretos."
+               data-en="We help companies turn ideas into systems that work. Automation, Business Intelligence and data integration — with close support and concrete results."></p>
+
+            <div class="hero-actions">
+                <a href="#contato"
+                   class="btn-primary"
+                   data-pt="Vamos Conversar"
+                   data-en="Let's Talk"></a>
+
+                <a href="#como-funciona"
+                   class="btn-secondary"
+                   data-pt="Conheça o nosso método"
+                   data-en="Discover our method"></a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="hero-mockup">
+                <div class="mockup-header"
+                     data-pt="Em Implementação"
+                     data-en="In Progress"></div>
+
+                <div class="mockup-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">Java</span>
+                        <span class="stat-label">Spring Boot</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">Power BI</span>
+                        <span class="stat-label" data-pt="Dashboards" data-en="Dashboards"></span>
+                    </div>
+                </div>
+
+                <p class="mockup-tagline"
+                   data-pt="Execução técnica, resultados concretos"
+                   data-en="Technical execution, concrete results"></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quote Section -->
+<section class="quote-section">
+    <div class="quote-container">
+        <blockquote class="quote-text"
+            data-pt="A maioria das empresas não precisa de mais estratégia.<br>Precisa de alguém que execute bem o que já foi decidido."
+            data-en="Most companies don't need more strategy.<br>They need someone to execute well what's already been decided."></blockquote>
+
+        <p class="quote-author"
+           data-pt="A nossa filosofia de trabalho"
+           data-en="Our work philosophy"></p>
+    </div>
+</section>
+
+<!-- Problems Section -->
+<section class="problems-section">
+    <div class="problems-container">
+        <div class="section-header animate-on-scroll">
+            <p class="section-subtitle"
+               data-pt="Desafios Comuns"
+               data-en="Common Challenges"></p>
+
+            <h2 class="section-title"
+                data-pt="Isto soa-lhe familiar?"
+                data-en="Does this sound familiar?"></h2>
+        </div>
+
+        <div class="problems-grid">
+
+            <div class="problem-card animate-on-scroll">
+                <div class="problem-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h3 class="problem-title"
+                    data-pt="Tempo perdido em tarefas repetitivas"
+                    data-en="Time lost on repetitive tasks"></h3>
+
+                <p class="problem-description"
+                   data-pt="A equipa dedica horas a tarefas administrativas que poderiam ser automatizadas. Admissões, faturação, gestão de stock — tudo ainda depende de Excel ou sistemas que não comunicam entre si."
+                   data-en="The team spends hours on administrative tasks that could be automated. Onboarding, invoicing, stock management — everything still depends on Excel or systems that don't communicate."></p>
+            </div>
+
+            <div class="problem-card animate-on-scroll">
+                <div class="problem-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                </div>
+                <h3 class="problem-title"
+                    data-pt="Decisões sem dados atualizados"
+                    data-en="Decisions without updated data"></h3>
+
+                <p class="problem-description"
+                   data-pt="Perguntas simples sobre o negócio — vendas do mês, melhores clientes, margem por serviço — demoram dias a ter resposta. A informação está dispersa e raramente atualizada."
+                   data-en="Simple business questions — monthly sales, top clients, margin per service — take days to answer. Information is scattered and rarely up to date."></p>
+            </div>
+
+            <div class="problem-card animate-on-scroll">
+                <div class="problem-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <h3 class="problem-title"
+                    data-pt="Tecnologia adquirida, mas subutilizada"
+                    data-en="Technology acquired, but underutilized"></h3>
+
+                <p class="problem-description"
+                   data-pt="Sistemas que foram adquiridos mas nunca implementados corretamente. Ferramentas que não se integram entre si, gerando mais trabalho do que aquele que poupam."
+                   data-en="Systems that were acquired but never properly implemented. Tools that don't integrate with each other, creating more work than they save."></p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Solutions Section -->
+<section class="solutions-section" id="solucoes">
+    <div class="solutions-container">
+        <div class="section-header animate-on-scroll">
+            <p class="section-subtitle"
+               data-pt="Áreas de Atuação"
+               data-en="Areas of Expertise"></p>
+
+            <h2 class="section-title"
+                data-pt="Como podemos ajudar"
+                data-en="How we can help"></h2>
+
+            <p class="section-description"
+               data-pt="Três áreas onde pequenas e médias empresas mais beneficiam de uma execução profissional e dedicada."
+               data-en="Three areas where small and medium businesses benefit most from professional, dedicated execution."></p>
+        </div>
+
+        <div class="solutions-grid">
+            <!-- Solution 1 -->
+            <div class="solution-card animate-on-scroll">
+                <div class="solution-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+
+                <h3 class="solution-title"
+                    data-pt="Automação de Processos"
+                    data-en="Process Automation"></h3>
+
+                <p class="solution-description"
+                   data-pt="Digitalizamos e automatizamos processos administrativos, operacionais e de RH. Do onboarding à faturação, eliminamos tarefas manuais repetitivas com integração inteligente."
+                   data-en="We digitalize and automate administrative, operational and HR processes. From onboarding to invoicing, we eliminate repetitive manual tasks with smart integration."></p>
+
+                <ul class="solution-features">
+                    <li data-pt="Workflows automatizados" data-en="Automated workflows"></li>
+                    <li data-pt="Integração multi-sistema" data-en="Multi-system integration"></li>
+                    <li data-pt="Menos erros, mais eficiência" data-en="Fewer errors, more efficiency"></li>
+                </ul>
+            </div>
+
+            <!-- Solution 2 -->
+            <div class="solution-card featured animate-on-scroll">
+                <div class="solution-badge"
+                     data-pt="MAIS PROCURADO"
+                     data-en="MOST POPULAR"></div>
+
+                <div class="solution-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"/>
+                        <line x1="12" y1="20" x2="12" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                </div>
+
+                <h3 class="solution-title"
+                    data-pt="Business Intelligence"
+                    data-en="Business Intelligence"></h3>
+
+                <p class="solution-description"
+                   data-pt="Dashboards e relatórios que centralizam vendas, clientes, finanças e operações. Informação em tempo real, acessível e pronta para decisões mais rápidas e seguras."
+                   data-en="Dashboards and reports that centralize sales, clients, finances and operations. Real-time information, accessible and ready for faster, confident decisions."></p>
+
+                <ul class="solution-features">
+                    <li data-pt="Dashboards em tempo real" data-en="Real-time dashboards"></li>
+                    <li data-pt="KPIs à medida do negócio" data-en="KPIs tailored to your business"></li>
+                    <li data-pt="Relatórios automatizados" data-en="Automated reports"></li>
+                </ul>
+            </div>
+
+            <!-- Solution 3 -->
+            <div class="solution-card animate-on-scroll">
+                <div class="solution-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                </div>
+
+                <h3 class="solution-title"
+                    data-pt="Integração e Segurança"
+                    data-en="Integration & Security"></h3>
+
+                <p class="solution-description"
+                   data-pt="Ligamos sistemas isolados, garantimos conformidade com o RGPD e configuramos backups automáticos. Dados centralizados, protegidos e acessíveis apenas a quem deve."
+                   data-en="We connect isolated systems, ensure GDPR compliance and set up automatic backups. Centralized data, protected and accessible only to the right people."></p>
+
+                <ul class="solution-features">
+                    <li data-pt="APIs e integrações" data-en="APIs and integrations"></li>
+                    <li data-pt="Conformidade RGPD" data-en="GDPR compliance"></li>
+                    <li data-pt="Backups automáticos" data-en="Automatic backups"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="solutions-cta animate-on-scroll">
+            <p class="solutions-cta-text"
+               data-pt="Cada implementação é adaptada ao contexto do seu negócio. Uma conversa de 15 minutos é suficiente para perceber a melhor abordagem."
+               data-en="Each implementation is tailored to your business context. A 15-minute conversation is enough to figure out the best approach."></p>
+            <a href="#contato"
+               class="btn-solutions-cta"
+               data-pt="Vamos Conversar"
+               data-en="Let's Talk"></a>
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="process-section" id="como-funciona">
+    <div class="process-container">
+        <div class="section-header animate-on-scroll">
+            <p class="section-subtitle"
+               data-pt="O Nosso Método"
+               data-en="Our Method"></p>
+
+            <h2 class="section-title"
+                data-pt="Simples, transparente e sem surpresas"
+                data-en="Simple, transparent and no surprises"></h2>
+        </div>
+
+        <div class="process-steps">
+
+            <div class="process-step animate-on-scroll">
+                <div class="step-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </div>
+                <h3 class="step-title"
+                    data-pt="Conversa Inicial"
+                    data-en="Initial Conversation"></h3>
+
+                <p class="step-meta"
+                   data-pt="15 a 30 minutos"
+                   data-en="15 to 30 minutes"></p>
+
+                <p class="step-description"
+                   data-pt="Ouvimos o que precisa de resolver, percebemos o contexto e avaliamos como podemos ajudar. Sem compromisso, ao seu ritmo."
+                   data-en="We listen to what you need to solve, understand the context and assess how we can help. No commitment, at your pace."></p>
+            </div>
+
+            <div class="process-step animate-on-scroll">
+                <div class="step-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+                </div>
+                <h3 class="step-title"
+                    data-pt="Proposta Clara"
+                    data-en="Clear Proposal"></h3>
+
+                <p class="step-meta"
+                   data-pt="Entregue em 24 a 48 horas"
+                   data-en="Delivered in 24 to 48 hours"></p>
+
+                <p class="step-description"
+                   data-pt="Recebe uma proposta com abordagem técnica, cronograma realista e investimento transparente. Tudo documentado, sem ambiguidades."
+                   data-en="You receive a proposal with technical approach, realistic timeline and transparent investment. Fully documented, no ambiguities."></p>
+            </div>
+
+            <div class="process-step animate-on-scroll">
+                <div class="step-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"/>
+                        <polyline points="8 6 2 12 8 18"/>
+                    </svg>
+                </div>
+                <h3 class="step-title"
+                    data-pt="Implementação Faseada"
+                    data-en="Phased Implementation"></h3>
+
+                <p class="step-meta"
+                   data-pt="Entregas incrementais"
+                   data-en="Incremental deliveries"></p>
+
+                <p class="step-description"
+                   data-pt="Entregas semanais com validação contínua. Começa com um módulo funcional e evolui com iteração e refinamento até ao resultado final."
+                   data-en="Weekly deliveries with ongoing validation. Starts with a functional module and evolves through iteration and refinement to the final result."></p>
+            </div>
+
+            <div class="process-step animate-on-scroll">
+                <div class="step-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <h3 class="step-title"
+                    data-pt="Acompanhamento Pós-Entrega"
+                    data-en="Post-Delivery Support"></h3>
+
+                <p class="step-meta"
+                   data-pt="30 dias incluídos"
+                   data-en="30 days included"></p>
+
+                <p class="step-description"
+                   data-pt="Suporte direto durante 30 dias para ajustes e dúvidas. Depois, modelo de acompanhamento opcional — sem dependência forçada."
+                   data-en="Direct support for 30 days for adjustments and questions. After that, optional follow-up model — no forced dependency."></p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section">
+    <div class="faq-container">
+        <div class="section-header animate-on-scroll">
+            <p class="section-subtitle"
+               data-pt="Perguntas Frequentes"
+               data-en="Frequently Asked Questions"></p>
+
+            <h2 class="section-title"
+                data-pt="Respostas claras antes de avançar"
+                data-en="Clear answers before moving forward"></h2>
+        </div>
+
+        <div class="faq-list">
+
+            <div class="faq-item animate-on-scroll">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-pt="Qual o investimento necessário para começar?"
+                          data-en="What investment is needed to get started?"></span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer"
+                     data-pt="Depende da complexidade e do âmbito. Após a conversa inicial, apresentamos uma proposta com investimento claro e faseamento definido. Trabalhamos com projetos de diferentes dimensões, desde automações pontuais até implementações mais abrangentes."
+                     data-en="It depends on complexity and scope. After the initial conversation, we present a proposal with clear investment and defined phases. We work with projects of different sizes, from specific automations to more comprehensive implementations."></div>
+            </div>
+
+            <div class="faq-item animate-on-scroll">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-pt="Trabalham apenas na zona de Lisboa?"
+                          data-en="Do you only work in the Lisbon area?"></span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer"
+                     data-pt="Não. Trabalhamos remotamente com empresas em todo o país. Reuniões por videochamada, implementação à distância e comunicação direta via WhatsApp ou email. Na zona de Lisboa e Setúbal, reuniões presenciais são uma opção."
+                     data-en="No. We work remotely with companies across the country. Video meetings, remote implementation and direct communication via WhatsApp or email. In the Lisbon and Setúbal area, in-person meetings are an option."></div>
+            </div>
+
+            <div class="faq-item animate-on-scroll">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-pt="Quanto tempo demora uma implementação?"
+                          data-en="How long does an implementation take?"></span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer"
+                     data-pt="Depende da complexidade. Automações pontuais: 2 a 4 semanas. Implementações de BI: 3 a 6 semanas. Projetos mais abrangentes: 6 a 12 semanas. Sempre com entregas faseadas e cronograma definido à partida."
+                     data-en="It depends on complexity. Specific automations: 2 to 4 weeks. BI implementations: 3 to 6 weeks. More comprehensive projects: 6 to 12 weeks. Always with phased deliveries and timeline set upfront."></div>
+            </div>
+
+            <div class="faq-item animate-on-scroll">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-pt="Precisamos de ter conhecimento técnico interno?"
+                          data-en="Do we need internal technical knowledge?"></span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer"
+                     data-pt="Não. Entregamos sistemas prontos a usar e formamos a equipa para uma utilização eficiente. O nosso objetivo é que tudo seja intuitivo — sem necessidade de entender código ou infraestrutura."
+                     data-en="No. We deliver ready-to-use systems and train your team for efficient use. Our goal is for everything to be intuitive — no need to understand code or infrastructure."></div>
+            </div>
+
+            <div class="faq-item animate-on-scroll">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-pt="Trabalham com os sistemas que já temos?"
+                          data-en="Do you work with systems we already have?"></span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer"
+                     data-pt="Sim. A maioria das implementações envolve integração com ferramentas existentes. O objetivo é fazer os sistemas comunicarem entre si e potenciar o que já funciona, sem substituir tudo desnecessariamente."
+                     data-en="Yes. Most implementations involve integration with existing tools. The goal is to make systems communicate with each other and enhance what already works, without replacing everything unnecessarily."></div>
+            </div>
+
+            <div class="faq-item animate-on-scroll">
+                <button class="faq-question" aria-expanded="false">
+                    <span data-pt="A nossa empresa não será pequena de mais para isto?"
+                          data-en="Isn't our company too small for this?"></span>
+                    <span class="faq-toggle">+</span>
+                </button>
+                <div class="faq-answer"
+                     data-pt="Se tem 3 ou mais colaboradores e o dia-a-dia inclui tarefas repetitivas que consomem tempo, provavelmente não. Trabalhamos frequentemente com equipas de 5 a 50 pessoas. Na conversa inicial percebemos juntos se faz sentido avançar agora."
+                     data-en="If you have 3 or more employees and your day-to-day includes repetitive tasks that consume time, probably not. We frequently work with teams of 5 to 50 people. In the initial conversation we figure out together if it makes sense to proceed now."></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="team-section" id="quem-somos">
+    <div class="team-container">
+        <div class="section-header animate-on-scroll">
+            <p class="section-subtitle"
+               data-pt="Quem Somos"
+               data-en="Who We Are"></p>
+
+            <h2 class="section-title"
+                data-pt="As pessoas por trás da implementação"
+                data-en="The people behind the implementation"></h2>
+        </div>
+
+        <div class="team-grid">
+
+            <div class="team-member animate-on-scroll">
+                <img src="Everson.png"
+                     alt="Everson Rubira"
+                     class="member-photo"
+                     loading="lazy"
+                     width="600"
+                     height="600">
+
+                <h3 class="member-name">Everson Rubira</h3>
+
+                <p class="member-role"
+                   data-pt="Backend e Integração de Sistemas"
+                   data-en="Backend & Systems Integration"></p>
+
+                <p class="member-description"
+                   data-pt="15 anos de experiência em operações comerciais internacionais. Especialista em Java e Spring Boot, com foco em transformar necessidades de negócio em sistemas funcionais, integrados e prontos para crescer."
+                   data-en="15 years of experience in international commercial operations. Java and Spring Boot specialist, focused on turning business needs into functional, integrated systems ready to grow."></p>
+
+                <div class="member-links">
+                    <a href="https://www.linkedin.com/in/eversonrubira/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Everson Rubira">LinkedIn</a>
+                </div>
+            </div>
+
+            <div class="team-member animate-on-scroll">
+                <img src="Pedro.png"
+                     alt="Pedro Alonso"
+                     class="member-photo"
+                     loading="lazy"
+                     width="600"
+                     height="600">
+
+                <h3 class="member-name">Pedro Alonso</h3>
+
+                <p class="member-role"
+                   data-pt="Business Intelligence e Cibersegurança"
+                   data-en="Business Intelligence & Cybersecurity"></p>
+
+                <p class="member-description"
+                   data-pt="Especialista em implementação de dashboards Power BI e proteção de dados. Certificações em cibersegurança. Foco na centralização de informação e conformidade com RGPD."
+                   data-en="Specialist in Power BI dashboard implementation and data protection. Cybersecurity certifications. Focused on information centralization and GDPR compliance."></p>
+
+                <div class="member-links">
+                    <a href="https://www.linkedin.com/in/pedrovfa/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Pedro Alonso">LinkedIn</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section" id="contato">
+    <div class="cta-container animate-on-scroll">
+        <h2 class="cta-title"
+            data-pt="Vamos conversar sem compromisso?"
+            data-en="Shall we have a no-commitment chat?"></h2>
+
+        <p class="cta-description"
+           data-pt="15 a 30 minutos para perceber se faz sentido trabalhar juntos. Sem pressão, sem obrigações — apenas uma conversa honesta sobre o que precisa."
+           data-en="15 to 30 minutes to see if it makes sense to work together. No pressure, no obligations — just an honest conversation about what you need."></p>
+
+        <a href="https://wa.me/351910625090?text=Olá!%20Vim%20pelo%20site%20da%20ImplementIQ%20Systems%20e%20gostaria%20de%20agendar%20uma%20conversa."
+           class="cta-button"
+           target="_blank"
+           rel="noopener noreferrer"
+           data-pt="Conversar via WhatsApp"
+           data-en="Chat via WhatsApp"></a>
+
+        <p class="cta-alternative"
+           data-pt="Ou envie email para <a href='mailto:contato@implementiq.pt'>contato@implementiq.pt</a>"
+           data-en="Or email us at <a href='mailto:contact@implementiq.pt'>contact@implementiq.pt</a>"></p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="implementiq-removebg-preview.png" alt="ImplementIQ Systems" class="footer-logo-img">
+        </div>
+
+        <p class="footer-description"
+           data-pt="Implementação profissional de automação, business intelligence e integração de sistemas para pequenas e médias empresas."
+           data-en="Professional implementation of automation, business intelligence and systems integration for small and medium businesses."></p>
+
+        <div class="footer-bottom">
+            <p>
+                <span class="copyright-year"></span> ImplementIQ Systems
+                <span data-pt="Implementação de Sistemas" data-en="Systems Implementation"></span>
+                — Portugal
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="core.js"></script>
+</body>
+</html>
