@@ -9,7 +9,1181 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+:root {
+    /* Color Palette */
+    --color-sand: #f8f7f4;
+    --color-sand-dark: #e8e6e1;
+    --color-navy: #6C5CE7;
+    --color-navy-light: #8B7CF6;
+    --color-charcoal: #374151;
+    --color-slate: #64748b;
+    --color-ash: #9ca3af;
+    --color-white: #ffffff;
+    --color-black: #111827;
+
+    /* Typography */
+    --font-serif: 'Merriweather', serif;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Spacing */
+    --section-padding: 7rem 2rem;
+    --container-max: 1200px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 12px 24px -4px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 24px 48px -8px rgba(0, 0, 0, 0.12);
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    color: var(--color-charcoal);
+    background-color: var(--color-white);
+    font-weight: 400;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* =============================
+   NAVIGATION
+   ============================= */
+.navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navigation.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
+}
+
+.nav-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    /* FIX #2: padding vertical fixo — sem hacks de margin negativo */
+    padding: 0.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 64px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+/* FIX #2: logo com altura proporcional e sem overflow da navbar */
+.logo-image {
+    height: 44px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--color-slate);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    letter-spacing: -0.01em;
+}
+
+.nav-link:hover {
+    color: var(--color-black);
+}
+
+.nav-cta {
+    background: var(--color-black);
+    color: white;
+    padding: 0.6rem 1.25rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.nav-cta:hover {
+    background: var(--color-navy);
+    transform: translateY(-1px);
+}
+
+.lang-toggle {
+    background: transparent;
+    border: 1.5px solid var(--color-sand-dark);
+    color: var(--color-slate);
+    padding: 0.4rem 0.7rem;
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.05em;
+}
+
+.lang-toggle:hover,
+.lang-toggle.active {
+    background: var(--color-black);
+    color: white;
+    border-color: var(--color-black);
+}
+
+.mobile-menu-button {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-black);
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+/* =============================
+   HERO
+   ============================= */
+.hero {
+    min-height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+    background-size: cover;
+    background-position: center;
+    /* FIX #4: desativado por defeito — só ativo em desktop via media query */
+    background-attachment: scroll;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: var(--section-padding);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+        rgba(248, 247, 244, 0.15) 0%,
+        rgba(232, 230, 225, 0.1) 100%);
+    z-index: 1;
+}
+
+.hero-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.hero-content {
+    animation: fadeInUp 0.8s ease-out;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+
+.hero-subtitle {
+    color: var(--color-navy);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.25rem;
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--color-black);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.hero-description {
+    font-size: 1.125rem;
+    color: var(--color-slate);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    max-width: 520px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: var(--color-black);
+    color: white;
+    padding: 0.875rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background: var(--color-navy);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    color: var(--color-charcoal);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+    padding: 0.875rem 0;
+}
+
+.btn-secondary:hover {
+    color: var(--color-navy);
+}
+
+.hero-visual {
+    position: relative;
+    animation: fadeInUp 0.8s ease-out 0.15s both;
+}
+
+.hero-mockup {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.mockup-header {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-charcoal);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.mockup-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-item {
+    background: var(--color-sand);
+    padding: 1rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+}
+
+.stat-value {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    display: block;
+}
+
+.stat-label {
+    color: var(--color-slate);
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+.mockup-tagline {
+    color: var(--color-slate);
+    font-style: italic;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* =============================
+   QUOTE
+   ============================= */
+.quote-section {
+    background: var(--color-sand);
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.quote-container {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.quote-text {
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+    font-style: italic;
+    color: var(--color-charcoal);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.quote-author {
+    color: var(--color-ash);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+}
+
+/* =============================
+   SECTION SHARED STYLES
+   ============================= */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-subtitle {
+    color: var(--color-navy);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 1.25rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.section-description {
+    font-size: 1.05rem;
+    color: var(--color-slate);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* =============================
+   PROBLEMS
+   ============================= */
+.problems-section {
+    padding: var(--section-padding);
+    background: var(--color-white);
+}
+
+.problems-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+.problems-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.problem-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-sand-dark);
+    border-radius: var(--radius-md);
+    padding: 2.5rem 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.problem-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+}
+
+.problem-icon {
+    color: var(--color-charcoal);
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+}
+
+.problem-card:hover .problem-icon {
+    opacity: 1;
+}
+
+.problem-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.problem-description {
+    color: var(--color-slate);
+    line-height: 1.75;
+    font-size: 0.95rem;
+}
+
+/* =============================
+   SOLUTIONS
+   ============================= */
+.solutions-section {
+    padding: var(--section-padding);
+    background: var(--color-sand);
+}
+
+.solutions-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+}
+
+.solution-card {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: var(--radius-md);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.solution-card.featured {
+    border-color: var(--color-navy);
+    border-width: 2px;
+}
+
+.solution-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.solution-badge {
+    position: absolute;
+    top: -11px;
+    right: 1.5rem;
+    background: var(--color-navy);
+    color: white;
+    padding: 0.25rem 0.875rem;
+    border-radius: 100px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.solution-icon {
+    color: var(--color-charcoal);
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+}
+
+.solution-card:hover .solution-icon {
+    opacity: 1;
+}
+
+.solution-title {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 1rem;
+}
+
+.solution-description {
+    color: var(--color-slate);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.solution-features {
+    list-style: none;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-sand-dark);
+}
+
+.solution-features li {
+    padding: 0.4rem 0;
+    color: var(--color-charcoal);
+    font-weight: 500;
+    font-size: 0.9rem;
+    position: relative;
+    padding-left: 1.25rem;
+}
+
+.solution-features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--color-charcoal);
+    opacity: 0.35;
+}
+
+.solutions-cta {
+    text-align: center;
+    background: white;
+    padding: 2.5rem;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.solutions-cta-text {
+    color: var(--color-slate);
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+}
+
+.btn-solutions-cta {
+    background: var(--color-black);
+    color: white;
+    padding: 0.875rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-solutions-cta:hover {
+    background: var(--color-navy);
+    transform: translateY(-2px);
+}
+
+/* =============================
+   PROCESS
+   ============================= */
+.process-section {
+    padding: var(--section-padding);
+    background-color: var(--color-sand);
+    background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+    background-size: cover;
+    background-position: center;
+    /* FIX #4: desativado por defeito */
+    background-attachment: scroll;
+    position: relative;
+}
+
+.process-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(248, 247, 244, 0.15);
+    z-index: 1;
+}
+
+.process-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.process-section .section-header {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 2.5rem 3rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+    margin-bottom: 2.5rem;
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 0;
+}
+
+.process-step {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 2rem 1.75rem;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+.process-step:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    background: white;
+}
+
+.step-icon {
+    color: var(--color-charcoal);
+    margin-bottom: 1.25rem;
+    opacity: 0.6;
+}
+
+.process-step:hover .step-icon {
+    opacity: 1;
+}
+
+.step-title {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.step-meta {
+    color: var(--color-navy);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.step-description {
+    color: var(--color-slate);
+    line-height: 1.7;
+    font-size: 0.9rem;
+}
+
+/* =============================
+   FAQ
+   ============================= */
+.faq-section {
+    padding: var(--section-padding);
+    background: var(--color-white);
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-list {
+    margin-top: 3rem;
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--color-sand-dark);
+    transition: all 0.3s ease;
+}
+
+.faq-item:first-child {
+    border-top: 1px solid var(--color-sand-dark);
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1.5rem 0;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-black);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: color 0.3s ease;
+    font-family: var(--font-sans);
+}
+
+.faq-question:hover {
+    color: var(--color-navy);
+}
+
+.faq-toggle {
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+    color: var(--color-ash);
+    font-weight: 300;
+    flex-shrink: 0;
+}
+
+.faq-answer {
+    padding: 0 0 1.5rem;
+    color: var(--color-slate);
+    line-height: 1.75;
+    display: none;
+    font-size: 0.95rem;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-item.active .faq-toggle {
+    transform: rotate(45deg);
+}
+
+/* =============================
+   TEAM
+   FIX #5: padding-top aumentado para acomodar o breakout das fotos
+   ============================= */
+.team-section {
+    padding: var(--section-padding);
+    background: var(--color-sand);
+}
+
+.team-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    /* FIX #5: margem superior suficiente para as fotos não cortarem */
+    margin-top: 6rem;
+}
+
+.team-member {
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: var(--radius-lg);
+    padding: 7.5rem 2.5rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: visible;
+}
+
+/* Foto breakout */
+.photo-wrapper {
+    position: absolute;
+    top: -85px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    background: var(--color-navy);
+    opacity: 0.18;
+    filter: blur(18px);
+    transform: translateY(14px);
+}
+
+.member-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    border: 4px solid var(--color-white);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.14);
+    background-color: var(--color-sand);
+}
+
+/* Badge perfeitamente centralizada */
+.member-badge {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-navy);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.9rem;
+    border-radius: 100px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.member-name {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 0.35rem;
+}
+
+.member-role {
+    color: var(--color-navy);
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+}
+
+.member-description {
+    color: var(--color-slate);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.member-links a {
+    color: var(--color-charcoal);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    border: 1.5px solid var(--color-sand-dark);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.member-links a:hover {
+    border-color: var(--color-navy);
+    color: var(--color-navy);
+}
+
+/* =============================
+   CTA
+   ============================= */
+.cta-section {
+    padding: var(--section-padding);
+    background-color: var(--color-sand);
+    background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+    background-size: cover;
+    background-position: center;
+    /* FIX #4: desativado por defeito */
+    background-attachment: scroll;
+    text-align: center;
+    position: relative;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(248, 247, 244, 0.15);
+    z-index: 1;
+}
+
+.cta-container {
+    max-width: 650px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 3.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+
+.cta-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 1.25rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.cta-description {
+    font-size: 1.05rem;
+    color: var(--color-slate);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+}
+
+.cta-button {
+    background: var(--color-black);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-lg);
+    display: inline-block;
+}
+
+.cta-button:hover {
+    background: var(--color-navy);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+}
+
+.cta-alternative {
+    margin-top: 1.5rem;
+    color: var(--color-ash);
+    font-size: 0.875rem;
+}
+
+.cta-alternative a {
+    color: var(--color-charcoal);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.cta-alternative a:hover {
+    color: var(--color-navy);
+}
+
+/* =============================
+   FOOTER
+   ============================= */
+.footer {
+    background: var(--color-black);
+    color: white;
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+/* FIX #2: footer logo também proporcional */
+.footer-logo-img {
+    height: 56px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+}
+
+.footer-description {
+    color: var(--color-ash);
+    margin-bottom: 2rem;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+    color: var(--color-ash);
+    font-size: 0.8rem;
+}
+
+/* =============================
+   ANIMATIONS
+   ============================= */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-on-scroll.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =============================
+   RESPONSIVE
+   ============================= */
+
+/* FIX #4: parallax só em desktop real — min-width 1025px garante que
+   tablets e dispositivos iOS não ativam o fixed background */
+@media (min-width: 1025px) {
+    .hero,
+    .process-section,
+    .cta-section {
+        background-attachment: fixed;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .hero-description {
+        max-width: 100%;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .problems-grid,
+    .solutions-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .process-steps {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 5rem 1.25rem;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--color-sand-dark);
+        box-shadow: var(--shadow-md);
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+
+    .mobile-menu-button {
+        display: flex;
+        align-items: center;
+    }
+
+    .hero {
+        padding: 7rem 1.25rem 4rem;
+        min-height: auto;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-primary,
+    .btn-solutions-cta,
+    .cta-button {
+        text-align: center;
+    }
+
+    .btn-secondary {
+        justify-content: center;
+    }
+
+    .problems-grid,
+    .solutions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .process-steps {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .team-grid {
+        gap: 4rem;
+    }
+}
+
+</style>
 </head>
 <body>
 
@@ -40,28 +1214,29 @@
 <section class="hero" id="home">
     <div class="hero-container">
         <div class="hero-content">
+            <!-- FIX #1: texto real no HTML como fallback (SEO + sem JS) -->
             <p class="hero-subtitle"
                data-pt="Soluções para Pequenas e Médias Empresas"
-               data-en="Solutions for Small and Medium Businesses"></p>
+               data-en="Solutions for Small and Medium Businesses">Soluções para Pequenas e Médias Empresas</p>
 
             <h1 class="hero-title"
                 data-pt="A sua decisão já está tomada.<br>A execução fica conosco."
-                data-en="Your decision is already made.<br>The execution is on us."></h1>
+                data-en="Your decision is already made.<br>The execution is on us.">A sua decisão já está tomada.<br>A execução fica conosco.</h1>
 
             <p class="hero-description"
                data-pt="Ajudamos empresas a transformar ideias em sistemas que funcionam. Automação, Business Intelligence e integração de dados — com acompanhamento próximo e resultados concretos."
-               data-en="We help companies turn ideas into systems that work. Automation, Business Intelligence and data integration — with close support and concrete results."></p>
+               data-en="We help companies turn ideas into systems that work. Automation, Business Intelligence and data integration — with close support and concrete results.">Ajudamos empresas a transformar ideias em sistemas que funcionam. Automação, Business Intelligence e integração de dados — com acompanhamento próximo e resultados concretos.</p>
 
             <div class="hero-actions">
                 <a href="#contato"
                    class="btn-primary"
                    data-pt="Vamos Conversar"
-                   data-en="Let's Talk"></a>
+                   data-en="Let's Talk">Vamos Conversar</a>
 
                 <a href="#como-funciona"
                    class="btn-secondary"
                    data-pt="Conheça o nosso método"
-                   data-en="Discover our method"></a>
+                   data-en="Discover our method">Conheça o nosso método</a>
             </div>
         </div>
 
@@ -69,7 +1244,7 @@
             <div class="hero-mockup">
                 <div class="mockup-header"
                      data-pt="Em Implementação"
-                     data-en="In Progress"></div>
+                     data-en="In Progress">Em Implementação</div>
 
                 <div class="mockup-stats">
                     <div class="stat-item">
@@ -78,13 +1253,13 @@
                     </div>
                     <div class="stat-item">
                         <span class="stat-value">Power BI</span>
-                        <span class="stat-label" data-pt="Dashboards" data-en="Dashboards"></span>
+                        <span class="stat-label" data-pt="Dashboards" data-en="Dashboards">Dashboards</span>
                     </div>
                 </div>
 
                 <p class="mockup-tagline"
                    data-pt="Execução técnica, resultados concretos"
-                   data-en="Technical execution, concrete results"></p>
+                   data-en="Technical execution, concrete results">Execução técnica, resultados concretos</p>
             </div>
         </div>
     </div>
@@ -95,11 +1270,11 @@
     <div class="quote-container">
         <blockquote class="quote-text"
             data-pt="A maioria das empresas não precisa de mais estratégia.<br>Precisa de alguém que execute bem o que já foi decidido."
-            data-en="Most companies don't need more strategy.<br>They need someone to execute well what's already been decided."></blockquote>
+            data-en="Most companies don't need more strategy.<br>They need someone to execute well what's already been decided.">A maioria das empresas não precisa de mais estratégia.<br>Precisa de alguém que execute bem o que já foi decidido.</blockquote>
 
         <p class="quote-author"
            data-pt="A nossa filosofia de trabalho"
-           data-en="Our work philosophy"></p>
+           data-en="Our work philosophy">A nossa filosofia de trabalho</p>
     </div>
 </section>
 
@@ -109,11 +1284,11 @@
         <div class="section-header animate-on-scroll">
             <p class="section-subtitle"
                data-pt="Desafios Comuns"
-               data-en="Common Challenges"></p>
+               data-en="Common Challenges">Desafios Comuns</p>
 
             <h2 class="section-title"
                 data-pt="Isto soa-lhe familiar?"
-                data-en="Does this sound familiar?"></h2>
+                data-en="Does this sound familiar?">Isto soa-lhe familiar?</h2>
         </div>
 
         <div class="problems-grid">
@@ -127,11 +1302,11 @@
                 </div>
                 <h3 class="problem-title"
                     data-pt="Tempo perdido em tarefas repetitivas"
-                    data-en="Time lost on repetitive tasks"></h3>
+                    data-en="Time lost on repetitive tasks">Tempo perdido em tarefas repetitivas</h3>
 
                 <p class="problem-description"
                    data-pt="A equipa dedica horas a tarefas administrativas que poderiam ser automatizadas. Admissões, faturação, gestão de stock — tudo ainda depende de Excel ou sistemas que não comunicam entre si."
-                   data-en="The team spends hours on administrative tasks that could be automated. Onboarding, invoicing, stock management — everything still depends on Excel or systems that don't communicate."></p>
+                   data-en="The team spends hours on administrative tasks that could be automated. Onboarding, invoicing, stock management — everything still depends on Excel or systems that don't communicate.">A equipa dedica horas a tarefas administrativas que poderiam ser automatizadas. Admissões, faturação, gestão de stock — tudo ainda depende de Excel ou sistemas que não comunicam entre si.</p>
             </div>
 
             <div class="problem-card animate-on-scroll">
@@ -144,11 +1319,11 @@
                 </div>
                 <h3 class="problem-title"
                     data-pt="Decisões sem dados atualizados"
-                    data-en="Decisions without updated data"></h3>
+                    data-en="Decisions without updated data">Decisões sem dados atualizados</h3>
 
                 <p class="problem-description"
                    data-pt="Perguntas simples sobre o negócio — vendas do mês, melhores clientes, margem por serviço — demoram dias a ter resposta. A informação está dispersa e raramente atualizada."
-                   data-en="Simple business questions — monthly sales, top clients, margin per service — take days to answer. Information is scattered and rarely up to date."></p>
+                   data-en="Simple business questions — monthly sales, top clients, margin per service — take days to answer. Information is scattered and rarely up to date.">Perguntas simples sobre o negócio — vendas do mês, melhores clientes, margem por serviço — demoram dias a ter resposta. A informação está dispersa e raramente atualizada.</p>
             </div>
 
             <div class="problem-card animate-on-scroll">
@@ -159,11 +1334,11 @@
                 </div>
                 <h3 class="problem-title"
                     data-pt="Tecnologia adquirida, mas subutilizada"
-                    data-en="Technology acquired, but underutilized"></h3>
+                    data-en="Technology acquired, but underutilized">Tecnologia adquirida, mas subutilizada</h3>
 
                 <p class="problem-description"
                    data-pt="Sistemas que foram adquiridos mas nunca implementados corretamente. Ferramentas que não se integram entre si, gerando mais trabalho do que aquele que poupam."
-                   data-en="Systems that were acquired but never properly implemented. Tools that don't integrate with each other, creating more work than they save."></p>
+                   data-en="Systems that were acquired but never properly implemented. Tools that don't integrate with each other, creating more work than they save.">Sistemas que foram adquiridos mas nunca implementados corretamente. Ferramentas que não se integram entre si, gerando mais trabalho do que aquele que poupam.</p>
             </div>
 
         </div>
@@ -176,15 +1351,15 @@
         <div class="section-header animate-on-scroll">
             <p class="section-subtitle"
                data-pt="Áreas de Atuação"
-               data-en="Areas of Expertise"></p>
+               data-en="Areas of Expertise">Áreas de Atuação</p>
 
             <h2 class="section-title"
                 data-pt="Como podemos ajudar"
-                data-en="How we can help"></h2>
+                data-en="How we can help">Como podemos ajudar</h2>
 
             <p class="section-description"
                data-pt="Três áreas onde pequenas e médias empresas mais beneficiam de uma execução profissional e dedicada."
-               data-en="Three areas where small and medium businesses benefit most from professional, dedicated execution."></p>
+               data-en="Three areas where small and medium businesses benefit most from professional, dedicated execution.">Três áreas onde pequenas e médias empresas mais beneficiam de uma execução profissional e dedicada.</p>
         </div>
 
         <div class="solutions-grid">
@@ -199,16 +1374,16 @@
 
                 <h3 class="solution-title"
                     data-pt="Automação de Processos"
-                    data-en="Process Automation"></h3>
+                    data-en="Process Automation">Automação de Processos</h3>
 
                 <p class="solution-description"
                    data-pt="Digitalizamos e automatizamos processos administrativos, operacionais e de RH. Do onboarding à faturação, eliminamos tarefas manuais repetitivas com integração inteligente."
-                   data-en="We digitalize and automate administrative, operational and HR processes. From onboarding to invoicing, we eliminate repetitive manual tasks with smart integration."></p>
+                   data-en="We digitalize and automate administrative, operational and HR processes. From onboarding to invoicing, we eliminate repetitive manual tasks with smart integration.">Digitalizamos e automatizamos processos administrativos, operacionais e de RH. Do onboarding à faturação, eliminamos tarefas manuais repetitivas com integração inteligente.</p>
 
                 <ul class="solution-features">
-                    <li data-pt="Workflows automatizados" data-en="Automated workflows"></li>
-                    <li data-pt="Integração multi-sistema" data-en="Multi-system integration"></li>
-                    <li data-pt="Menos erros, mais eficiência" data-en="Fewer errors, more efficiency"></li>
+                    <li data-pt="Workflows automatizados" data-en="Automated workflows">Workflows automatizados</li>
+                    <li data-pt="Integração multi-sistema" data-en="Multi-system integration">Integração multi-sistema</li>
+                    <li data-pt="Menos erros, mais eficiência" data-en="Fewer errors, more efficiency">Menos erros, mais eficiência</li>
                 </ul>
             </div>
 
@@ -216,7 +1391,7 @@
             <div class="solution-card featured animate-on-scroll">
                 <div class="solution-badge"
                      data-pt="MAIS PROCURADO"
-                     data-en="MOST POPULAR"></div>
+                     data-en="MOST POPULAR">MAIS PROCURADO</div>
 
                 <div class="solution-icon">
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -228,16 +1403,16 @@
 
                 <h3 class="solution-title"
                     data-pt="Business Intelligence"
-                    data-en="Business Intelligence"></h3>
+                    data-en="Business Intelligence">Business Intelligence</h3>
 
                 <p class="solution-description"
                    data-pt="Dashboards e relatórios que centralizam vendas, clientes, finanças e operações. Informação em tempo real, acessível e pronta para decisões mais rápidas e seguras."
-                   data-en="Dashboards and reports that centralize sales, clients, finances and operations. Real-time information, accessible and ready for faster, confident decisions."></p>
+                   data-en="Dashboards and reports that centralize sales, clients, finances and operations. Real-time information, accessible and ready for faster, confident decisions.">Dashboards e relatórios que centralizam vendas, clientes, finanças e operações. Informação em tempo real, acessível e pronta para decisões mais rápidas e seguras.</p>
 
                 <ul class="solution-features">
-                    <li data-pt="Dashboards em tempo real" data-en="Real-time dashboards"></li>
-                    <li data-pt="KPIs à medida do negócio" data-en="KPIs tailored to your business"></li>
-                    <li data-pt="Relatórios automatizados" data-en="Automated reports"></li>
+                    <li data-pt="Dashboards em tempo real" data-en="Real-time dashboards">Dashboards em tempo real</li>
+                    <li data-pt="KPIs à medida do negócio" data-en="KPIs tailored to your business">KPIs à medida do negócio</li>
+                    <li data-pt="Relatórios automatizados" data-en="Automated reports">Relatórios automatizados</li>
                 </ul>
             </div>
 
@@ -252,16 +1427,16 @@
 
                 <h3 class="solution-title"
                     data-pt="Integração e Segurança"
-                    data-en="Integration & Security"></h3>
+                    data-en="Integration &amp; Security">Integração e Segurança</h3>
 
                 <p class="solution-description"
                    data-pt="Ligamos sistemas isolados, garantimos conformidade com o RGPD e configuramos backups automáticos. Dados centralizados, protegidos e acessíveis apenas a quem deve."
-                   data-en="We connect isolated systems, ensure GDPR compliance and set up automatic backups. Centralized data, protected and accessible only to the right people."></p>
+                   data-en="We connect isolated systems, ensure GDPR compliance and set up automatic backups. Centralized data, protected and accessible only to the right people.">Ligamos sistemas isolados, garantimos conformidade com o RGPD e configuramos backups automáticos. Dados centralizados, protegidos e acessíveis apenas a quem deve.</p>
 
                 <ul class="solution-features">
-                    <li data-pt="APIs e integrações" data-en="APIs and integrations"></li>
-                    <li data-pt="Conformidade RGPD" data-en="GDPR compliance"></li>
-                    <li data-pt="Backups automáticos" data-en="Automatic backups"></li>
+                    <li data-pt="APIs e integrações" data-en="APIs and integrations">APIs e integrações</li>
+                    <li data-pt="Conformidade RGPD" data-en="GDPR compliance">Conformidade RGPD</li>
+                    <li data-pt="Backups automáticos" data-en="Automatic backups">Backups automáticos</li>
                 </ul>
             </div>
         </div>
@@ -269,11 +1444,11 @@
         <div class="solutions-cta animate-on-scroll">
             <p class="solutions-cta-text"
                data-pt="Cada implementação é adaptada ao contexto do seu negócio. Uma conversa de 15 minutos é suficiente para perceber a melhor abordagem."
-               data-en="Each implementation is tailored to your business context. A 15-minute conversation is enough to figure out the best approach."></p>
+               data-en="Each implementation is tailored to your business context. A 15-minute conversation is enough to figure out the best approach.">Cada implementação é adaptada ao contexto do seu negócio. Uma conversa de 15 minutos é suficiente para perceber a melhor abordagem.</p>
             <a href="#contato"
                class="btn-solutions-cta"
                data-pt="Vamos Conversar"
-               data-en="Let's Talk"></a>
+               data-en="Let's Talk">Vamos Conversar</a>
         </div>
     </div>
 </section>
@@ -284,11 +1459,11 @@
         <div class="section-header animate-on-scroll">
             <p class="section-subtitle"
                data-pt="O Nosso Método"
-               data-en="Our Method"></p>
+               data-en="Our Method">O Nosso Método</p>
 
             <h2 class="section-title"
                 data-pt="Simples, transparente e sem surpresas"
-                data-en="Simple, transparent and no surprises"></h2>
+                data-en="Simple, transparent and no surprises">Simples, transparente e sem surpresas</h2>
         </div>
 
         <div class="process-steps">
@@ -301,15 +1476,15 @@
                 </div>
                 <h3 class="step-title"
                     data-pt="Conversa Inicial"
-                    data-en="Initial Conversation"></h3>
+                    data-en="Initial Conversation">Conversa Inicial</h3>
 
                 <p class="step-meta"
                    data-pt="15 a 30 minutos"
-                   data-en="15 to 30 minutes"></p>
+                   data-en="15 to 30 minutes">15 a 30 minutos</p>
 
                 <p class="step-description"
                    data-pt="Ouvimos o que precisa de resolver, percebemos o contexto e avaliamos como podemos ajudar. Sem compromisso, ao seu ritmo."
-                   data-en="We listen to what you need to solve, understand the context and assess how we can help. No commitment, at your pace."></p>
+                   data-en="We listen to what you need to solve, understand the context and assess how we can help. No commitment, at your pace.">Ouvimos o que precisa de resolver, percebemos o contexto e avaliamos como podemos ajudar. Sem compromisso, ao seu ritmo.</p>
             </div>
 
             <div class="process-step animate-on-scroll">
@@ -323,15 +1498,15 @@
                 </div>
                 <h3 class="step-title"
                     data-pt="Proposta Clara"
-                    data-en="Clear Proposal"></h3>
+                    data-en="Clear Proposal">Proposta Clara</h3>
 
                 <p class="step-meta"
                    data-pt="Entregue em 24 a 48 horas"
-                   data-en="Delivered in 24 to 48 hours"></p>
+                   data-en="Delivered in 24 to 48 hours">Entregue em 24 a 48 horas</p>
 
                 <p class="step-description"
                    data-pt="Recebe uma proposta com abordagem técnica, cronograma realista e investimento transparente. Tudo documentado, sem ambiguidades."
-                   data-en="You receive a proposal with technical approach, realistic timeline and transparent investment. Fully documented, no ambiguities."></p>
+                   data-en="You receive a proposal with technical approach, realistic timeline and transparent investment. Fully documented, no ambiguities.">Recebe uma proposta com abordagem técnica, cronograma realista e investimento transparente. Tudo documentado, sem ambiguidades.</p>
             </div>
 
             <div class="process-step animate-on-scroll">
@@ -343,15 +1518,15 @@
                 </div>
                 <h3 class="step-title"
                     data-pt="Implementação Faseada"
-                    data-en="Phased Implementation"></h3>
+                    data-en="Phased Implementation">Implementação Faseada</h3>
 
                 <p class="step-meta"
                    data-pt="Entregas incrementais"
-                   data-en="Incremental deliveries"></p>
+                   data-en="Incremental deliveries">Entregas incrementais</p>
 
                 <p class="step-description"
                    data-pt="Entregas semanais com validação contínua. Começa com um módulo funcional e evolui com iteração e refinamento até ao resultado final."
-                   data-en="Weekly deliveries with ongoing validation. Starts with a functional module and evolves through iteration and refinement to the final result."></p>
+                   data-en="Weekly deliveries with ongoing validation. Starts with a functional module and evolves through iteration and refinement to the final result.">Entregas semanais com validação contínua. Começa com um módulo funcional e evolui com iteração e refinamento até ao resultado final.</p>
             </div>
 
             <div class="process-step animate-on-scroll">
@@ -363,15 +1538,15 @@
                 </div>
                 <h3 class="step-title"
                     data-pt="Acompanhamento Pós-Entrega"
-                    data-en="Post-Delivery Support"></h3>
+                    data-en="Post-Delivery Support">Acompanhamento Pós-Entrega</h3>
 
                 <p class="step-meta"
                    data-pt="30 dias incluídos"
-                   data-en="30 days included"></p>
+                   data-en="30 days included">30 dias incluídos</p>
 
                 <p class="step-description"
                    data-pt="Suporte direto durante 30 dias para ajustes e dúvidas. Depois, modelo de acompanhamento opcional — sem dependência forçada."
-                   data-en="Direct support for 30 days for adjustments and questions. After that, optional follow-up model — no forced dependency."></p>
+                   data-en="Direct support for 30 days for adjustments and questions. After that, optional follow-up model — no forced dependency.">Suporte direto durante 30 dias para ajustes e dúvidas. Depois, modelo de acompanhamento opcional — sem dependência forçada.</p>
             </div>
 
         </div>
@@ -384,79 +1559,80 @@
         <div class="section-header animate-on-scroll">
             <p class="section-subtitle"
                data-pt="Perguntas Frequentes"
-               data-en="Frequently Asked Questions"></p>
+               data-en="Frequently Asked Questions">Perguntas Frequentes</p>
 
             <h2 class="section-title"
                 data-pt="Respostas claras antes de avançar"
-                data-en="Clear answers before moving forward"></h2>
+                data-en="Clear answers before moving forward">Respostas claras antes de avançar</h2>
         </div>
 
         <div class="faq-list">
 
             <div class="faq-item animate-on-scroll">
                 <button class="faq-question" aria-expanded="false">
+                    <!-- FIX #3: texto real nas perguntas e respostas do FAQ -->
                     <span data-pt="Qual o investimento necessário para começar?"
-                          data-en="What investment is needed to get started?"></span>
+                          data-en="What investment is needed to get started?">Qual o investimento necessário para começar?</span>
                     <span class="faq-toggle">+</span>
                 </button>
                 <div class="faq-answer"
                      data-pt="Depende da complexidade e do âmbito. Após a conversa inicial, apresentamos uma proposta com investimento claro e faseamento definido. Trabalhamos com projetos de diferentes dimensões, desde automações pontuais até implementações mais abrangentes."
-                     data-en="It depends on complexity and scope. After the initial conversation, we present a proposal with clear investment and defined phases. We work with projects of different sizes, from specific automations to more comprehensive implementations."></div>
+                     data-en="It depends on complexity and scope. After the initial conversation, we present a proposal with clear investment and defined phases. We work with projects of different sizes, from specific automations to more comprehensive implementations.">Depende da complexidade e do âmbito. Após a conversa inicial, apresentamos uma proposta com investimento claro e faseamento definido. Trabalhamos com projetos de diferentes dimensões, desde automações pontuais até implementações mais abrangentes.</div>
             </div>
 
             <div class="faq-item animate-on-scroll">
                 <button class="faq-question" aria-expanded="false">
                     <span data-pt="Trabalham apenas na zona de Lisboa?"
-                          data-en="Do you only work in the Lisbon area?"></span>
+                          data-en="Do you only work in the Lisbon area?">Trabalham apenas na zona de Lisboa?</span>
                     <span class="faq-toggle">+</span>
                 </button>
                 <div class="faq-answer"
                      data-pt="Não. Trabalhamos remotamente com empresas em todo o país. Reuniões por videochamada, implementação à distância e comunicação direta via WhatsApp ou email. Na zona de Lisboa e Setúbal, reuniões presenciais são uma opção."
-                     data-en="No. We work remotely with companies across the country. Video meetings, remote implementation and direct communication via WhatsApp or email. In the Lisbon and Setúbal area, in-person meetings are an option."></div>
+                     data-en="No. We work remotely with companies across the country. Video meetings, remote implementation and direct communication via WhatsApp or email. In the Lisbon and Setúbal area, in-person meetings are an option.">Não. Trabalhamos remotamente com empresas em todo o país. Reuniões por videochamada, implementação à distância e comunicação direta via WhatsApp ou email. Na zona de Lisboa e Setúbal, reuniões presenciais são uma opção.</div>
             </div>
 
             <div class="faq-item animate-on-scroll">
                 <button class="faq-question" aria-expanded="false">
                     <span data-pt="Quanto tempo demora uma implementação?"
-                          data-en="How long does an implementation take?"></span>
+                          data-en="How long does an implementation take?">Quanto tempo demora uma implementação?</span>
                     <span class="faq-toggle">+</span>
                 </button>
                 <div class="faq-answer"
                      data-pt="Depende da complexidade. Automações pontuais: 2 a 4 semanas. Implementações de BI: 3 a 6 semanas. Projetos mais abrangentes: 6 a 12 semanas. Sempre com entregas faseadas e cronograma definido à partida."
-                     data-en="It depends on complexity. Specific automations: 2 to 4 weeks. BI implementations: 3 to 6 weeks. More comprehensive projects: 6 to 12 weeks. Always with phased deliveries and timeline set upfront."></div>
+                     data-en="It depends on complexity. Specific automations: 2 to 4 weeks. BI implementations: 3 to 6 weeks. More comprehensive projects: 6 to 12 weeks. Always with phased deliveries and timeline set upfront.">Depende da complexidade. Automações pontuais: 2 a 4 semanas. Implementações de BI: 3 a 6 semanas. Projetos mais abrangentes: 6 a 12 semanas. Sempre com entregas faseadas e cronograma definido à partida.</div>
             </div>
 
             <div class="faq-item animate-on-scroll">
                 <button class="faq-question" aria-expanded="false">
                     <span data-pt="Precisamos de ter conhecimento técnico interno?"
-                          data-en="Do we need internal technical knowledge?"></span>
+                          data-en="Do we need internal technical knowledge?">Precisamos de ter conhecimento técnico interno?</span>
                     <span class="faq-toggle">+</span>
                 </button>
                 <div class="faq-answer"
                      data-pt="Não. Entregamos sistemas prontos a usar e formamos a equipa para uma utilização eficiente. O nosso objetivo é que tudo seja intuitivo — sem necessidade de entender código ou infraestrutura."
-                     data-en="No. We deliver ready-to-use systems and train your team for efficient use. Our goal is for everything to be intuitive — no need to understand code or infrastructure."></div>
+                     data-en="No. We deliver ready-to-use systems and train your team for efficient use. Our goal is for everything to be intuitive — no need to understand code or infrastructure.">Não. Entregamos sistemas prontos a usar e formamos a equipa para uma utilização eficiente. O nosso objetivo é que tudo seja intuitivo — sem necessidade de entender código ou infraestrutura.</div>
             </div>
 
             <div class="faq-item animate-on-scroll">
                 <button class="faq-question" aria-expanded="false">
                     <span data-pt="Trabalham com os sistemas que já temos?"
-                          data-en="Do you work with systems we already have?"></span>
+                          data-en="Do you work with systems we already have?">Trabalham com os sistemas que já temos?</span>
                     <span class="faq-toggle">+</span>
                 </button>
                 <div class="faq-answer"
                      data-pt="Sim. A maioria das implementações envolve integração com ferramentas existentes. O objetivo é fazer os sistemas comunicarem entre si e potenciar o que já funciona, sem substituir tudo desnecessariamente."
-                     data-en="Yes. Most implementations involve integration with existing tools. The goal is to make systems communicate with each other and enhance what already works, without replacing everything unnecessarily."></div>
+                     data-en="Yes. Most implementations involve integration with existing tools. The goal is to make systems communicate with each other and enhance what already works, without replacing everything unnecessarily.">Sim. A maioria das implementações envolve integração com ferramentas existentes. O objetivo é fazer os sistemas comunicarem entre si e potenciar o que já funciona, sem substituir tudo desnecessariamente.</div>
             </div>
 
             <div class="faq-item animate-on-scroll">
                 <button class="faq-question" aria-expanded="false">
                     <span data-pt="A nossa empresa não será pequena de mais para isto?"
-                          data-en="Isn't our company too small for this?"></span>
+                          data-en="Isn't our company too small for this?">A nossa empresa não será pequena de mais para isto?</span>
                     <span class="faq-toggle">+</span>
                 </button>
                 <div class="faq-answer"
                      data-pt="Se tem 3 ou mais colaboradores e o dia-a-dia inclui tarefas repetitivas que consomem tempo, provavelmente não. Trabalhamos frequentemente com equipas de 5 a 50 pessoas. Na conversa inicial percebemos juntos se faz sentido avançar agora."
-                     data-en="If you have 3 or more employees and your day-to-day includes repetitive tasks that consume time, probably not. We frequently work with teams of 5 to 50 people. In the initial conversation we figure out together if it makes sense to proceed now."></div>
+                     data-en="If you have 3 or more employees and your day-to-day includes repetitive tasks that consume time, probably not. We frequently work with teams of 5 to 50 people. In the initial conversation we figure out together if it makes sense to proceed now.">Se tem 3 ou mais colaboradores e o dia-a-dia inclui tarefas repetitivas que consomem tempo, provavelmente não. Trabalhamos frequentemente com equipas de 5 a 50 pessoas. Na conversa inicial percebemos juntos se faz sentido avançar agora.</div>
             </div>
 
         </div>
@@ -470,11 +1646,11 @@
         <div class="section-header animate-on-scroll">
             <p class="section-subtitle"
                data-pt="Quem Somos"
-               data-en="Who We Are"></p>
+               data-en="Who We Are">Quem Somos</p>
 
             <h2 class="section-title"
                 data-pt="As pessoas por trás da implementação"
-                data-en="The people behind the implementation"></h2>
+                data-en="The people behind the implementation">As pessoas por trás da implementação</h2>
         </div>
 
         <div class="team-grid">
@@ -494,11 +1670,11 @@
 
                 <p class="member-role"
                    data-pt="Backend e Integração de Sistemas"
-                   data-en="Backend & Systems Integration"></p>
+                   data-en="Backend &amp; Systems Integration">Backend e Integração de Sistemas</p>
 
                 <p class="member-description"
                    data-pt="15 anos de experiência em operações comerciais internacionais. Especialista em Java e Spring Boot, com foco em transformar necessidades de negócio em sistemas funcionais, integrados e prontos para crescer."
-                   data-en="15 years of experience in international commercial operations. Java and Spring Boot specialist, focused on turning business needs into functional, integrated systems ready to grow."></p>
+                   data-en="15 years of experience in international commercial operations. Java and Spring Boot specialist, focused on turning business needs into functional, integrated systems ready to grow.">15 anos de experiência em operações comerciais internacionais. Especialista em Java e Spring Boot, com foco em transformar necessidades de negócio em sistemas funcionais, integrados e prontos para crescer.</p>
 
                 <div class="member-links">
                     <a href="https://www.linkedin.com/in/eversonrubira/"
@@ -523,11 +1699,11 @@
 
                 <p class="member-role"
                    data-pt="Business Intelligence e Cibersegurança"
-                   data-en="Business Intelligence & Cybersecurity"></p>
+                   data-en="Business Intelligence &amp; Cybersecurity">Business Intelligence e Cibersegurança</p>
 
                 <p class="member-description"
                    data-pt="Especialista em implementação de dashboards Power BI e proteção de dados. Certificações em cibersegurança. Foco na centralização de informação e conformidade com RGPD."
-                   data-en="Specialist in Power BI dashboard implementation and data protection. Cybersecurity certifications. Focused on information centralization and GDPR compliance."></p>
+                   data-en="Specialist in Power BI dashboard implementation and data protection. Cybersecurity certifications. Focused on information centralization and GDPR compliance.">Especialista em implementação de dashboards Power BI e proteção de dados. Certificações em cibersegurança. Foco na centralização de informação e conformidade com RGPD.</p>
 
                 <div class="member-links">
                     <a href="https://www.linkedin.com/in/pedrovfa/"
@@ -546,22 +1722,22 @@
     <div class="cta-container animate-on-scroll">
         <h2 class="cta-title"
             data-pt="Vamos conversar sem compromisso?"
-            data-en="Shall we have a no-commitment chat?"></h2>
+            data-en="Shall we have a no-commitment chat?">Vamos conversar sem compromisso?</h2>
 
         <p class="cta-description"
            data-pt="15 a 30 minutos para perceber se faz sentido trabalhar juntos. Sem pressão, sem obrigações — apenas uma conversa honesta sobre o que precisa."
-           data-en="15 to 30 minutes to see if it makes sense to work together. No pressure, no obligations — just an honest conversation about what you need."></p>
+           data-en="15 to 30 minutes to see if it makes sense to work together. No pressure, no obligations — just an honest conversation about what you need.">15 a 30 minutos para perceber se faz sentido trabalhar juntos. Sem pressão, sem obrigações — apenas uma conversa honesta sobre o que precisa.</p>
 
         <a href="https://wa.me/351910625090?text=Olá!%20Vim%20pelo%20site%20da%20ImplementIQ%20Systems%20e%20gostaria%20de%20agendar%20uma%20conversa."
            class="cta-button"
            target="_blank"
            rel="noopener noreferrer"
            data-pt="Conversar via WhatsApp"
-           data-en="Chat via WhatsApp"></a>
+           data-en="Chat via WhatsApp">Conversar via WhatsApp</a>
 
         <p class="cta-alternative"
            data-pt="Ou envie email para <a href='mailto:contato@implementiq.pt'>contato@implementiq.pt</a>"
-           data-en="Or email us at <a href='mailto:contact@implementiq.pt'>contact@implementiq.pt</a>"></p>
+           data-en="Or email us at <a href='mailto:contact@implementiq.pt'>contact@implementiq.pt</a>">Ou envie email para <a href="mailto:contato@implementiq.pt">contato@implementiq.pt</a></p>
     </div>
 </section>
 
@@ -574,18 +1750,169 @@
 
         <p class="footer-description"
            data-pt="Implementação profissional de automação, business intelligence e integração de sistemas para pequenas e médias empresas."
-           data-en="Professional implementation of automation, business intelligence and systems integration for small and medium businesses."></p>
+           data-en="Professional implementation of automation, business intelligence and systems integration for small and medium businesses.">Implementação profissional de automação, business intelligence e integração de sistemas para pequenas e médias empresas.</p>
 
         <div class="footer-bottom">
             <p>
                 <span class="copyright-year"></span> ImplementIQ Systems
-                <span data-pt="Implementação de Sistemas" data-en="Systems Implementation"></span>
+                <span data-pt="Implementação de Sistemas" data-en="Systems Implementation">Implementação de Sistemas</span>
                 — Portugal
             </p>
         </div>
     </div>
 </footer>
 
-<script src="core.js"></script>
+<script>
+
+let currentLang = 'pt';
+
+function toggleLanguage() {
+    currentLang = currentLang === 'pt' ? 'en' : 'pt';
+    updateContent();
+    updateLanguageButton();
+    localStorage.setItem('lang', currentLang);
+    document.documentElement.lang = currentLang === 'pt' ? 'pt' : 'en';
+}
+
+function updateContent() {
+    document.querySelectorAll('[data-pt]').forEach(function(element) {
+        const translation = element.getAttribute('data-' + currentLang);
+        if (translation) {
+            element.innerHTML = translation;
+        }
+    });
+}
+
+function updateLanguageButton() {
+    const langButton = document.querySelector('.lang-toggle');
+    if (langButton) {
+        langButton.textContent = currentLang === 'pt' ? 'EN' : 'PT';
+        langButton.classList.toggle('active', currentLang === 'en');
+        langButton.setAttribute('aria-label',
+            currentLang === 'pt' ? 'Switch to English' : 'Mudar para Português'
+        );
+    }
+}
+
+function updateCopyrightYear() {
+    const yearEl = document.querySelector('.copyright-year');
+    if (yearEl) {
+        yearEl.textContent = '\u00A9 ' + new Date().getFullYear();
+    }
+}
+
+function setupMobileMenu() {
+    const btn = document.getElementById('mobileMenuBtn');
+    const menu = document.getElementById('navMenu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function() {
+        const isOpen = menu.classList.toggle('open');
+        btn.setAttribute('aria-label',
+            isOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'
+        );
+    });
+    menu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            menu.classList.remove('open');
+        });
+    });
+}
+
+function setupSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+}
+
+function setupNavScroll() {
+    const nav = document.querySelector('.navigation');
+    if (!nav) return;
+    window.addEventListener('scroll', function() {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+}
+
+function setupScrollAnimations() {
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
+    document.querySelectorAll('.animate-on-scroll').forEach(function(el) {
+        observer.observe(el);
+    });
+}
+
+function setupFAQ() {
+    document.querySelectorAll('.faq-question').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const faqItem = button.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(function(item) {
+                item.classList.remove('active');
+                const q = item.querySelector('.faq-question');
+                if (q) q.setAttribute('aria-expanded', 'false');
+            });
+            if (!isActive) {
+                faqItem.classList.add('active');
+                button.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+}
+
+function setup3DPhotoEffect() {
+    // Efeito 3D removido — hover tratado apenas por CSS (sombra + translateY subtil)
+}
+
+function setupParallax() {
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+        if (window.innerWidth <= 1024) return;
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.25;
+            ['.hero', '.process-section', '.cta-section'].forEach(function(selector) {
+                const element = document.querySelector(selector);
+                if (element) element.style.backgroundPositionY = rate + 'px';
+            });
+            ticking = false;
+        });
+    }, { passive: true });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang) {
+        currentLang = savedLang;
+        document.documentElement.lang = currentLang === 'pt' ? 'pt' : 'en';
+    }
+    updateContent();
+    updateLanguageButton();
+    updateCopyrightYear();
+    setupMobileMenu();
+    setupSmoothScroll();
+    setupNavScroll();
+    setupScrollAnimations();
+    setupFAQ();
+    setupParallax();
+    setup3DPhotoEffect();
+    const langButton = document.querySelector('.lang-toggle');
+    if (langButton) {
+        langButton.addEventListener('click', toggleLanguage);
+    }
+});
+
+</script>
 </body>
 </html>
