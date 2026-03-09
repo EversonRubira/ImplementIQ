@@ -76,10 +76,12 @@ body {
 .nav-container {
     max-width: var(--container-max);
     margin: 0 auto;
-    padding: 0.25rem 2rem;
+    /* FIX #2: padding vertical fixo — sem hacks de margin negativo */
+    padding: 0.75rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 64px;
 }
 
 .logo {
@@ -88,12 +90,11 @@ body {
     text-decoration: none;
 }
 
+/* FIX #2: logo com altura proporcional e sem overflow da navbar */
 .logo-image {
-    height: 230px !important;
-    max-height: none !important;
-    width: auto !important;
+    height: 100px;
+    width: auto;
     display: block;
-    margin: -80px 0;
     object-fit: contain;
 }
 
@@ -169,7 +170,8 @@ body {
     background-image: url('https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    /* FIX #4: desativado por defeito — só ativo em desktop via media query */
+    background-attachment: scroll;
     position: relative;
     display: flex;
     align-items: center;
@@ -609,7 +611,8 @@ body {
     background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    /* FIX #4: desativado por defeito */
+    background-attachment: scroll;
     position: relative;
 }
 
@@ -771,6 +774,7 @@ body {
 
 /* =============================
    TEAM
+   FIX #5: padding-top aumentado para acomodar o breakout das fotos
    ============================= */
 .team-section {
     padding: var(--section-padding);
@@ -786,27 +790,28 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
-    margin-top: 4rem;
+    /* FIX #5: margem superior suficiente para as fotos não cortarem */
+    margin-top: 6rem;
 }
 
 .team-member {
     background: var(--color-white);
     border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: var(--radius-lg);
-    padding: 5rem 2.5rem 2.5rem;
+    padding: 7.5rem 2.5rem 2.5rem;
     text-align: center;
     position: relative;
+    overflow: visible;
 }
-
 
 /* Foto breakout */
 .photo-wrapper {
     position: absolute;
-    top: -65px;
+    top: -85px;
     left: 50%;
     transform: translateX(-50%);
-    width: 170px;
-    height: 170px;
+    width: 160px;
+    height: 160px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -824,8 +829,8 @@ body {
 }
 
 .member-photo {
-    width: 170px;
-    height: 170px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
     object-fit: cover;
     object-position: top center;
@@ -904,7 +909,8 @@ body {
     background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    /* FIX #4: desativado por defeito */
+    background-attachment: scroll;
     text-align: center;
     position: relative;
 }
@@ -1005,8 +1011,9 @@ body {
     margin-bottom: 1.5rem;
 }
 
+/* FIX #2: footer logo também proporcional */
 .footer-logo-img {
-    height: 250px;
+    height: 56px;
     width: auto;
     filter: brightness(0) invert(1);
     opacity: 0.9;
@@ -1057,6 +1064,17 @@ body {
 /* =============================
    RESPONSIVE
    ============================= */
+
+/* FIX #4: parallax só em desktop real — min-width 1025px garante que
+   tablets e dispositivos iOS não ativam o fixed background */
+@media (min-width: 1025px) {
+    .hero,
+    .process-section,
+    .cta-section {
+        background-attachment: fixed;
+    }
+}
+
 @media (max-width: 1024px) {
     .hero-container {
         grid-template-columns: 1fr;
@@ -1086,13 +1104,7 @@ body {
         max-width: 500px;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 4rem;
-    }
-
-    .hero,
-    .process-section,
-    .cta-section {
-        background-attachment: scroll;
+        margin-top: 5rem;
     }
 }
 
@@ -1155,12 +1167,6 @@ body {
     }
 
     .team-grid {
-        gap: 1.5rem;
-    }
-
-    .hero,
-    .process-section,
-    .cta-section {
-        background-attachment: scroll !important;
+        gap: 4rem;
     }
 }
